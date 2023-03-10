@@ -48,7 +48,6 @@ def modificar():
     create_form = forms.UserForm(request.form)
     if request.method == 'GET':
         id = request.args.get('id')
-        # select*from alumnos where id = id
         alum1 = db.session.query(Alumnos).filter(Alumnos.id == id).first()
         create_form.id.data = request.args.get('id')
         create_form.nombre.data = alum1.nombre
@@ -69,7 +68,6 @@ def modificar():
     return render_template('modificar.html',form=create_form)
 
 
-# ùnú owo Owo
 if __name__ == '__main__':
     csrf.init_app(app)
     db.init_app(app)
